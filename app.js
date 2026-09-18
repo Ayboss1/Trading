@@ -21,7 +21,7 @@ form.addEventListener('submit', (event) => {
   registrations.unshift(registration);
   localStorage.setItem('ai-income-registrations', JSON.stringify(registrations));
 
-  const adminWhatsApp = (localStorage.getItem('ai-income-admin-whatsapp') || '').replace(/\D/g, '');
+  const adminWhatsApp = (localStorage.getItem('ai-income-admin-whatsapp') || '2348075395493').replace(/\D/g, '');
   if (!adminWhatsApp) {
     message.textContent = 'Your seat is reserved. The organiser will contact you shortly.';
     return;

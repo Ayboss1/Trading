@@ -25,7 +25,7 @@ function escapeHtml(value) {
 }
 
 const numberInput = document.querySelector('#admin-whatsapp');
-numberInput.value = localStorage.getItem(adminWhatsAppKey) || '';
+numberInput.value = localStorage.getItem(adminWhatsAppKey) || '2348075395493';
 document.querySelector('#save-whatsapp').addEventListener('click', () => {
   const number = numberInput.value.replace(/\D/g, '');
   const message = document.querySelector('#settings-message');
