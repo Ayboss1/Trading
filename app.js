@@ -33,7 +33,7 @@ form.addEventListener('submit', (event) => {
     });
   }
 
-  const adminWhatsApp = (localStorage.getItem('ai-income-admin-whatsapp') || '2348075395493').replace(/\D/g, '');
+  const adminWhatsApp = (localStorage.getItem('ai-income-admin-whatsapp') || '2349031592736').replace(/\D/g, '');
   if (!adminWhatsApp) {
     message.textContent = 'Your seat is reserved. The organiser will contact you shortly.';
     return;
