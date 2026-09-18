@@ -21,6 +21,18 @@ form.addEventListener('submit', (event) => {
   registrations.unshift(registration);
   localStorage.setItem('ai-income-registrations', JSON.stringify(registrations));
 
+  const sheetsEndpoint = window.SHEETS_CONFIG?.endpoint;
+  if (sheetsEndpoint) {
+    fetch(sheetsEndpoint, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(registration)
+    }).catch(() => {
+      message.textContent = 'Your details were saved locally. Please contact the organiser on WhatsApp.';
+    });
+  }
+
   const adminWhatsApp = (localStorage.getItem('ai-income-admin-whatsapp') || '2348075395493').replace(/\D/g, '');
   if (!adminWhatsApp) {
     message.textContent = 'Your seat is reserved. The organiser will contact you shortly.';
@@ -28,6 +40,6 @@ form.addEventListener('submit', (event) => {
   }
 
   const chatMessage = `Hello, I would like to reserve my seat for The AI Income Opportunity™ masterclass.\n\nName: ${registration.name}\nEmail: ${registration.email}\nWhatsApp: ${registration.whatsapp}\nAbout me: ${registration.role}`;
-  message.textContent = 'Your details have been saved. Opening WhatsApp…';
+  message.textContent = sheetsEndpoint ? 'Your details have been saved. Opening WhatsApp…' : 'Your details have been saved locally. Opening WhatsApp…';
   window.open(`https://wa.me/${adminWhatsApp}?text=${encodeURIComponent(chatMessage)}`, '_blank', 'noopener');
 });

@@ -2,6 +2,8 @@ const registrationsKey = 'ai-income-registrations';
 const adminWhatsAppKey = 'ai-income-admin-whatsapp';
 const getRegistrations = () => JSON.parse(localStorage.getItem(registrationsKey) || '[]');
 
+document.querySelector('#open-spreadsheet').href = window.SHEETS_CONFIG?.spreadsheetUrl || '#';
+
 function formatDate(value) {
   return new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(value));
 }
